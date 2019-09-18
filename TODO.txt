@@ -1,0 +1,10 @@
+todo:
+
+design level + mirror (labyrinth)
+script enemy (labyrinth)
+tweak enemy audio (labyrinth)
+script audio nodes (both)
+script level end (both)
+script spawnpoint randomization (room)
+script endpoint randomization (room)
+playtest (both)
