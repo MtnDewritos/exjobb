@@ -1584,6 +1584,7 @@ MonoBehaviour:
   - {fileID: 884661532}
   - {fileID: 1440439095}
   - {fileID: 1615582406}
+  endpoints: {fileID: 1450202324}
 --- !u!1 &384155072
 GameObject:
   m_ObjectHideFlags: 0
@@ -6331,6 +6332,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1450202325}
+  - component: {fileID: 1450202326}
   m_Layer: 0
   m_Name: endpoints
   m_TagString: Untagged
@@ -6359,6 +6361,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1450202326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1450202324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ddd42335c202ca499f98ffb43a169bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  endpoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  range: 20
 --- !u!1 &1473360739
 GameObject:
   m_ObjectHideFlags: 0

@@ -15,10 +15,9 @@ public class spawnpoint : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {   
-        
-        player = GetComponent<GameObject>();
         int rand = Random.Range(0, 6);
         startPosition = spawnpoints[rand].transform.position;
+        player.transform.position = startPosition;
         endpoints.SendMessage("SelectPosition",startPosition);
     }
 
