@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(playerMotor))]
+[RequireComponent(typeof(BoxCollider))]
 public class playerController : MonoBehaviour
 {
     [SerializeField]
@@ -10,11 +11,19 @@ public class playerController : MonoBehaviour
     [SerializeField]
     private float sensitivity = 3f;
 
+    AudioSource audioSource;
+
+    private BoxCollider collider;
     private playerMotor motor;
     void Start()
     {
         motor = GetComponent<playerMotor>();
+        collider = GetComponent<BoxCollider>();
+        audioSource = GetComponent<AudioSource>();
+
     }
+
+
 
     void Update()
     {
@@ -24,7 +33,7 @@ public class playerController : MonoBehaviour
         Vector3 _movHorizontal = transform.right * _xMov;
         Vector3 _movVertical = transform.forward * _yMov;
 
-        Vector3 _velocity = (_movHorizontal + _movVertical).normalized * speed;
+        Vector3 _velocity = (_movHorizontal + _movVertical).normalized;// * speed;
 
         motor.Move(_velocity);
 
@@ -40,5 +49,19 @@ public class playerController : MonoBehaviour
         Vector3 _cameraRotation = new Vector3(_xRot, 0f, 0f) * sensitivity;
         motor.RotateCamera(_cameraRotation);
     }
-}
+    
+    void OnCollisionEnter(Collision collision)
+    {
+        foreach (ContactPoint contact in collision.contacts)
+        {
+            Debug.Log("collision");
+            Debug.DrawRay(contact.point, contact.normal, Color.white);
+        }
+        if (collision.relativeVelocity.magnitude < 10)
+            Debug.Log("collision at speed");
+             Debug.Log(collision.relativeVelocity.magnitude);
+             audioSource.Play();
+        }
+    }
+
 

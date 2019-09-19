@@ -10,6 +10,7 @@ public class playerMotor : MonoBehaviour
     private Vector3 velocity = Vector3.zero;
     private Vector3 rotation = Vector3.zero;
     private Vector3 cameraRotation = Vector3.zero;
+    private float speed = 10f;
 
     private Rigidbody rb;
 
@@ -42,8 +43,8 @@ public class playerMotor : MonoBehaviour
     {
         if (velocity != Vector3.zero)
         {
-            
-            rb.MovePosition(rb.position + velocity * Time.fixedDeltaTime);
+
+            rb.velocity = velocity * speed;
         }
     }
     void PerformRotation()
