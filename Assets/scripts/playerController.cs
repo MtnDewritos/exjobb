@@ -13,17 +13,24 @@ public class playerController : MonoBehaviour
 
     AudioSource audioSource;
 
-    private BoxCollider collider;
     private playerMotor motor;
     void Start()
     {
         motor = GetComponent<playerMotor>();
-        collider = GetComponent<BoxCollider>();
         audioSource = GetComponent<AudioSource>();
-
+        
     }
 
-
+    IEnumerator Footsteps(Vector3 velocity) //måste på nått sätt få den konstanta ändringen i velocity
+    {
+        if (velocity.x > 0.1 || velocity.z > 0.1)
+        {
+            float time = 1 / (velocity.x + velocity.y); 
+            yield return new WaitForSeconds(time);
+            Debug.Log("played sound");
+            audioSource.Play();
+        }
+    }
 
     void Update()
     {
@@ -48,20 +55,10 @@ public class playerController : MonoBehaviour
 
         Vector3 _cameraRotation = new Vector3(_xRot, 0f, 0f) * sensitivity;
         motor.RotateCamera(_cameraRotation);
+        
     }
     
-    void OnCollisionEnter(Collision collision)
-    {
-        foreach (ContactPoint contact in collision.contacts)
-        {
-            Debug.Log("collision");
-            Debug.DrawRay(contact.point, contact.normal, Color.white);
-        }
-        if (collision.relativeVelocity.magnitude < 10)
-            Debug.Log("collision at speed");
-             Debug.Log(collision.relativeVelocity.magnitude);
-             audioSource.Play();
-        }
+   
     }
 
 

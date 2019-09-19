@@ -20,6 +20,14 @@ public class playerMotor : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
+    public Vector3 Velocity
+    {
+        get
+        {
+            return rb.velocity;
+        }
+    }
+
     public void Move(Vector3 _velocity)
     {
         velocity = _velocity;
