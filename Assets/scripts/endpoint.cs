@@ -19,14 +19,18 @@ public class endpoint : MonoBehaviour
             rand = Random.Range(0, 7);
             selectedPosition = endpoints[rand].transform.position;
         }
+        Debug.Log("selected endpoint");
         StartCoroutine(PlaySound(endpoints[rand]));
     }
-    IEnumerator PlaySound(GameObject point) //måste på nått sätt få den konstanta ändringen i velocity
+    IEnumerator PlaySound(GameObject point) 
     {
+        while (true)
+        {
             float time = 1.5f;
             yield return new WaitForSeconds(time);
             Debug.Log("played sound");
             point.SendMessage("Play");
+        }
        
     }
 }

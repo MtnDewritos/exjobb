@@ -15,6 +15,7 @@ public class playsound : MonoBehaviour
     public void Play()
     {
         audioSource.Play();
+        Debug.Log("Audiosource playing");
     }
 
 
