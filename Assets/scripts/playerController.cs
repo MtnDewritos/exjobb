@@ -11,6 +11,9 @@ public class playerController : MonoBehaviour
     [SerializeField]
     private float sensitivity = 3f;
 
+    private float nextPlay = 0;
+    
+
     AudioSource audioSource;
 
     private playerMotor motor;
@@ -55,7 +58,14 @@ public class playerController : MonoBehaviour
 
         Vector3 _cameraRotation = new Vector3(_xRot, 0f, 0f) * sensitivity;
         motor.RotateCamera(_cameraRotation);
-        
+
+        float timeInterval = 1 / (_velocity.x + _velocity.y);
+        float time = Time.time;
+        if (time >= nextPlay)
+        {
+            nextPlay = time + timeInterval;
+            audioSource.Play();
+        }    
     }
     
    

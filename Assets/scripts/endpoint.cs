@@ -6,7 +6,6 @@ public class endpoint : MonoBehaviour
 {
     [SerializeField]
     private GameObject[] endpoints = new GameObject[7];
-    [SerializeField] //for testing purposes
     private int range = 20;
 
     public void SelectPosition(Vector3 startPosition)
