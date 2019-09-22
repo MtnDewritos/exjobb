@@ -3,9 +3,9 @@ todo:
 design level + mirror (labyrinth)
 script enemy (labyrinth)
 tweak enemy audio (labyrinth)
-script audio nodes (both)
+script audio nodes (both) - done
 script level end (both)
-script spawnpoint randomization (room)
+script spawnpoint randomization (room) - done
 script endpoint randomization (room)
-player wall hit sfx (room)
+player wall hit sfx (room) -- footsteps - done
 playtest (both)
