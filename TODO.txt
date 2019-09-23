@@ -1,12 +1,14 @@
 todo:
 
-design level + mirror (maze)
+design level -done + mirror (maze)
 script enemy (maze)
 	sees 6 units ahead, 2 units behind
-tweak enemy audio (maze)
+
 audio node hit starts new audio node (maze)
-playtest (both)
 make lights weaker further away from player (maze) (sighline to the next "tile")
+
+tweak enemy audio (maze)
+playtest (both)
 
 Tutorial Room
 
