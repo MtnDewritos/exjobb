@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class endpoint_maze : MonoBehaviour
+public class endpoint_maze : MonoBehaviour //more like soundpoints
 {
     [SerializeField]
-    private GameObject[] endpoints = new GameObject[7];
+    private GameObject[] endpoints = new GameObject[1]; //maybe 2/3
    
 
     public void SelectPosition(int start)
