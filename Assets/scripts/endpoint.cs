@@ -18,7 +18,7 @@ public class endpoint : MonoBehaviour
             rand = Random.Range(0, 7);
             selectedPosition = endpoints[rand].transform.position;
         }
-        Debug.Log("selected endpoint");
+        endpoints[rand].SendMessage("IsEnd", true);
         StartCoroutine(PlaySound(endpoints[rand]));
     }
     IEnumerator PlaySound(GameObject point) 
@@ -27,7 +27,6 @@ public class endpoint : MonoBehaviour
         {
             float time = 1.5f;
             yield return new WaitForSeconds(time);
-            Debug.Log("played sound");
             point.SendMessage("Play");
         }
        

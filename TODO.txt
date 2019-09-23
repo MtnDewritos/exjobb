@@ -2,6 +2,7 @@ todo:
 
 design level + mirror (maze)
 script enemy (maze)
+	sees 6 units ahead, 2 units behind
 tweak enemy audio (maze)
 script audio nodes (both) - done
 audio node hit starts new audio node (maze)

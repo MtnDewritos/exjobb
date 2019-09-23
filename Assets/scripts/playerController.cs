@@ -11,7 +11,7 @@ public class playerController : MonoBehaviour
     [SerializeField]
     private float sensitivity = 3f;
 
-    private float nextPlay = 0;
+    private float nextPlay = 0f;
     
 
     AudioSource audioSource;
@@ -59,9 +59,40 @@ public class playerController : MonoBehaviour
         Vector3 _cameraRotation = new Vector3(_xRot, 0f, 0f) * sensitivity;
         motor.RotateCamera(_cameraRotation);
 
-        float timeInterval = 1 / (_velocity.x + _velocity.y);
+        //play footsteps with interval based on player speed
+        float timeInterval = 0f;
+        if (!(motor.Velocity.x == 0f && motor.Velocity.z == 0f))
+        {
+            float x = motor.Velocity.x;
+            float z = motor.Velocity.z;
+            if(x < 0)
+            {
+                x *= -1;
+            }
+            if(z < 0)
+            {
+                z *= -1;
+            }
+            if (x > 0.001 && z > 0.001) //so you don't take steps when basically not moving at all
+            {
+              
+                timeInterval = 1 / (x + z);
+                if (timeInterval > 2f) //so you don't end up with more than 2s delay between steps
+                {
+                    timeInterval = 2f;
+                }
+            }
+            else
+            {
+                timeInterval = 0f;
+            }
+        }
+        else
+        {
+            timeInterval = 0f;
+        }
         float time = Time.time;
-        if (time >= nextPlay)
+        if (time >= nextPlay && timeInterval != 0f) 
         {
             nextPlay = time + timeInterval;
             audioSource.Play();

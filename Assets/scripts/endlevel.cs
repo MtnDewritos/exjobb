@@ -5,9 +5,20 @@ using UnityEngine.SceneManagement;
 
 public class endlevel : MonoBehaviour
 {
+    private bool isEnd = false;
+    public void IsEnd(bool value)
+    {
+        this.isEnd = value; 
+    }
 
     private void OnTriggerEnter(Collider other)
     {
-       // SceneManager.LoadScene("maze");
+        if (isEnd)
+        {
+            Debug.Log("end this level");
+            //write to file "Time taken " + Time.time
+            //SceneManager.LoadScene("maze");
+        }
+        
     }
 }
