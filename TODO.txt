@@ -10,5 +10,6 @@ script spawnpoint randomization (room) - done
 script endpoint randomization (room)
 player wall hit sfx (room) -- footsteps - done
 playtest (both)
+make lights weaker further away from player (maze)
 
 Tutorial Room
