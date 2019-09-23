@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class endlevel : MonoBehaviour
 {
+    [SerializeField]
+    private string nextLevel;
     private bool isEnd = false;
     public void IsEnd(bool value)
     {
@@ -17,7 +19,11 @@ public class endlevel : MonoBehaviour
         {
             Debug.Log("end this level");
             //write to file "Time taken " + Time.time
-            //SceneManager.LoadScene("maze");
+            if(nextLevel != null)
+            {
+                SceneManager.LoadScene(nextLevel);
+            }
+            
         }
         
     }

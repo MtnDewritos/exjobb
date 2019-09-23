@@ -4,13 +4,19 @@ design level + mirror (maze)
 script enemy (maze)
 	sees 6 units ahead, 2 units behind
 tweak enemy audio (maze)
-script audio nodes (both) - done
 audio node hit starts new audio node (maze)
-script level end (both)
-script spawnpoint randomization (room) - done
-script endpoint randomization (room)
-player wall hit sfx (room) -- footsteps - done
 playtest (both)
-make lights weaker further away from player (maze)
+make lights weaker further away from player (maze) (sighline to the next "tile")
 
 Tutorial Room
+
+non-raycast version of everything
+
+
+done:
+
+script audio nodes (both) 
+script level end (both)
+script spawnpoint randomization (room)
+script endpoint randomization (room) 
+player wall hit sfx (room) -- footsteps 
