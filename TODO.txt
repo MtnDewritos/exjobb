@@ -7,6 +7,8 @@ script enemy (maze)
 audio node hit starts new audio node (maze)
 make lights weaker further away from player (maze) (sighline to the next "tile")
 
+hit counter + time counter
+
 tweak enemy audio (maze)
 playtest (both)
 
