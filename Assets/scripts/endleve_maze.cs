@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.IO;
 
-public class endlevel : MonoBehaviour
+public class endlevel_maze : MonoBehaviour
 {
     [SerializeField]
     private string nextLevel;
@@ -22,12 +22,12 @@ public class endlevel : MonoBehaviour
             string path = @"c:\temp\" + filename;
             if (!File.Exists(path))
             {
-                int nr = GameObject.Find("geometry").GetComponent<counter>().Nr;
+                int nr = GameObject.Find("enemy").GetComponent<counter>().Nr;
                 // Create a file to write to.
                 using (StreamWriter sw = File.CreateText(path))
                 {
                     sw.WriteLine("Time taken: " + Time.time + "s");
-                    sw.WriteLine("Wall hits: " + nr);
+                    sw.WriteLine("Enemy hits: " + nr);
                 }
             }
             //write to file "Time taken " + Time.time
