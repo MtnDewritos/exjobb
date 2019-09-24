@@ -20,6 +20,7 @@ public class playerController : MonoBehaviour
     void Start()
     {
         motor = GetComponent<playerMotor>();
+        
         audioSource = GetComponent<AudioSource>();
         
     }
@@ -59,44 +60,47 @@ public class playerController : MonoBehaviour
         Vector3 _cameraRotation = new Vector3(_xRot, 0f, 0f) * sensitivity;
         motor.RotateCamera(_cameraRotation);
 
-        //play footsteps with interval based on player speed
-        float timeInterval = 0f;
-        if (!(motor.Velocity.x == 0f && motor.Velocity.z == 0f))
+        if (audioSource != null)
         {
-            float x = motor.Velocity.x;
-            float z = motor.Velocity.z;
-            if(x < 0)
+            //play footsteps with interval based on player speed
+            float timeInterval = 0f;
+            if (!(motor.Velocity.x == 0f && motor.Velocity.z == 0f))
             {
-                x *= -1;
-            }
-            if(z < 0)
-            {
-                z *= -1;
-            }
-            if (x > 0.001 && z > 0.001) //so you don't take steps when basically not moving at all
-            {
-              
-                timeInterval = 1 / (x + z);
-                if (timeInterval > 2f) //so you don't end up with more than 2s delay between steps
+                float x = motor.Velocity.x;
+                float z = motor.Velocity.z;
+                if (x < 0)
                 {
-                    timeInterval = 2f;
+                    x *= -1;
+                }
+                if (z < 0)
+                {
+                    z *= -1;
+                }
+                if (x > 0.001 && z > 0.001) //so you don't take steps when basically not moving at all
+                {
+
+                    timeInterval = 1 / (x + z);
+                    if (timeInterval > 2f) //so you don't end up with more than 2s delay between steps
+                    {
+                        timeInterval = 2f;
+                    }
+                }
+                else
+                {
+                    timeInterval = 0f;
                 }
             }
             else
             {
                 timeInterval = 0f;
             }
+            float time = Time.time;
+            if (time >= nextPlay && timeInterval != 0f)
+            {
+                nextPlay = time + timeInterval;
+                audioSource.Play();
+            }
         }
-        else
-        {
-            timeInterval = 0f;
-        }
-        float time = Time.time;
-        if (time >= nextPlay && timeInterval != 0f) 
-        {
-            nextPlay = time + timeInterval;
-            audioSource.Play();
-        }    
     }
     
    

@@ -5,19 +5,20 @@ using UnityEngine;
 public class lightcontrol : MonoBehaviour
 {
     [SerializeField]
-    private GameObject[] neighbors;
+    private List<GameObject> neighbors = new List<GameObject>();
     
     private void LightNeighbors()
     {
+        
         foreach(GameObject n in neighbors)
         {
-            n.SendMessage("LightUp");
+              n.SendMessage("LightUp");
         }
     }
 
     private void LightUp()
     {
-        GetComponent<Light>().intensity = 0.1f;
+        GetComponentInChildren<Light>().intensity = 0.1f;
     }
     
 }

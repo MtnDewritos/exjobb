@@ -1,13 +1,8 @@
 todo:
 
-design level -done + mirror (maze)
+
 script enemy (maze)
 	sees 6 units ahead, 2 units behind
-
-
-make lights weaker further away from player (maze) (sighline to the next "tile")
-
-
 
 tweak enemy audio (maze)
 playtest (both)
@@ -15,6 +10,7 @@ playtest (both)
 Tutorial Room
 
 non-raycast version of everything
+	mirror (maze)
 
 
 done:
@@ -26,3 +22,5 @@ script endpoint randomization (room)
 player wall hit sfx (room) -- footsteps 
 audio node hit starts new audio node (maze)
 hit counter + time counter
+make lights weaker further away from player (maze) (sighline to the next "tile")
+design level (maze) - done
