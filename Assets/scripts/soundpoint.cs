@@ -2,22 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class counter : MonoBehaviour
+public class soundpoint : MonoBehaviour
 {
-    private static int nr = 0;
 
-    public int Nr
-    {
-        get { return nr; }
-    }
     private void OnTriggerEnter(Collider other)
     {
-        if(other.name == "player")
+        if (other.name == "player")
         {
             Debug.Log("hit");
-            nr++;
+            GetComponentInParent<endpoint_maze>().SendMessage("Increment");
         }
-        
+
     }
-    
+
 }

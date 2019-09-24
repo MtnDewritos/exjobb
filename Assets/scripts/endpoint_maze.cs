@@ -5,22 +5,37 @@ using UnityEngine;
 public class endpoint_maze : MonoBehaviour //more like soundpoints
 {
     [SerializeField]
-    private GameObject[] endpoints = new GameObject[1]; //maybe 2/3
-   
+    private GameObject[] endpoints = new GameObject[4]; 
+
+    private float nextPlay = 0f;
+    private int i = 0;
 
     public void SelectPosition(int start)
     {
         StartCoroutine(PlaySound(endpoints[start]));
     }
-    IEnumerator PlaySound(GameObject point) 
+    public void Increment()
+    {
+        i++;
+    }
+    private void Update()
+    {
+        float time = Time.time;
+        float timeInterval = 1.5f;
+        if (time >= nextPlay && timeInterval != 0f)
+        {
+            nextPlay = time + timeInterval;
+            endpoints[i].SendMessage("Play");
+        }
+    }
+    IEnumerator PlaySound(GameObject point)
     {
         while (true)
         {
             float time = 1.5f;
             yield return new WaitForSeconds(time);
-            Debug.Log("played sound");
             point.SendMessage("Play");
         }
-       
+
     }
 }

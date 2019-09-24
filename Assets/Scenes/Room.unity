@@ -2677,7 +2677,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextLevel: maze
-  filename: 
+  filename: room.txt
 --- !u!65 &514816697
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3072,7 +3072,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextLevel: maze
-  filename: 
+  filename: room.txt
 --- !u!65 &594377183
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4048,7 +4048,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextLevel: maze
-  filename: 
+  filename: room.txt
 --- !u!65 &767300578
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7280,7 +7280,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextLevel: maze
-  filename: 
+  filename: room.txt
 --- !u!65 &1536088857
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7981,7 +7981,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextLevel: maze
-  filename: 
+  filename: room.txt
 --- !u!65 &1639586862
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8284,7 +8284,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextLevel: maze
-  filename: 
+  filename: room.txt
 --- !u!65 &1745356666
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9230,7 +9230,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextLevel: maze
-  filename: 
+  filename: room.txt
 --- !u!65 &2020825958
 BoxCollider:
   m_ObjectHideFlags: 0
