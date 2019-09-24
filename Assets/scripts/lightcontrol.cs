@@ -6,16 +6,18 @@ public class lightcontrol : MonoBehaviour
 {
     [SerializeField]
     private GameObject[] neighbors;
-
-    // Start is called before the first frame update
-    void Start()
+    
+    private void LightNeighbors()
     {
-        
+        foreach(GameObject n in neighbors)
+        {
+            n.SendMessage("LightUp");
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void LightUp()
     {
-        
+        GetComponent<Light>().intensity = 0.1f;
     }
+    
 }

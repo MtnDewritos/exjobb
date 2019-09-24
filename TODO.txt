@@ -4,10 +4,10 @@ design level -done + mirror (maze)
 script enemy (maze)
 	sees 6 units ahead, 2 units behind
 
-audio node hit starts new audio node (maze)
+
 make lights weaker further away from player (maze) (sighline to the next "tile")
 
-hit counter + time counter
+
 
 tweak enemy audio (maze)
 playtest (both)
@@ -24,3 +24,5 @@ script level end (both)
 script spawnpoint randomization (room)
 script endpoint randomization (room) 
 player wall hit sfx (room) -- footsteps 
+audio node hit starts new audio node (maze)
+hit counter + time counter
