@@ -17,6 +17,10 @@ public class endpoint_maze : MonoBehaviour //more like soundpoints
     public void Increment()
     {
         i++;
+        if(i == (endpoints.Length - 1))
+        {
+            endpoints[i].SendMessage("isEnd", true);
+        }
     }
     private void Update()
     {

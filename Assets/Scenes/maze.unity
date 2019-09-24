@@ -5249,7 +5249,6 @@ GameObject:
   - component: {fileID: 285766715}
   - component: {fileID: 285766714}
   - component: {fileID: 285766713}
-  - component: {fileID: 285766712}
   - component: {fileID: 285766717}
   m_Layer: 0
   m_Name: spawnpoint (1)
@@ -5272,20 +5271,6 @@ Transform:
   m_Father: {fileID: 205505175}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!114 &285766712
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 285766710}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fffc1c6523073624ba1c400a485b1248, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nextLevel: 
-  filename: 
 --- !u!65 &285766713
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6921,6 +6906,7 @@ GameObject:
   - component: {fileID: 374292007}
   - component: {fileID: 374292006}
   - component: {fileID: 374292011}
+  - component: {fileID: 374292012}
   m_Layer: 0
   m_Name: Enemy (2)
   m_TagString: Untagged
@@ -6955,7 +6941,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 4, y: 1.5, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &374292008
 MeshRenderer:
@@ -7036,6 +7022,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92693230d1027a94b890b24d2668c245, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &374292012
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 374292005}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4, y: 1.5, z: 1.1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &377600395
 GameObject:
   m_ObjectHideFlags: 0
@@ -9120,7 +9119,6 @@ GameObject:
   - component: {fileID: 505042088}
   - component: {fileID: 505042087}
   - component: {fileID: 505042086}
-  - component: {fileID: 505042085}
   - component: {fileID: 505042090}
   m_Layer: 0
   m_Name: spawnpoint
@@ -9143,20 +9141,6 @@ Transform:
   m_Father: {fileID: 205505175}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &505042085
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 505042083}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fffc1c6523073624ba1c400a485b1248, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nextLevel: 
-  filename: 
 --- !u!65 &505042086
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14944,7 +14928,6 @@ GameObject:
   - component: {fileID: 844828813}
   - component: {fileID: 844828812}
   - component: {fileID: 844828811}
-  - component: {fileID: 844828810}
   - component: {fileID: 844828815}
   m_Layer: 0
   m_Name: spawnpoint (3)
@@ -14967,20 +14950,6 @@ Transform:
   m_Father: {fileID: 205505175}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &844828810
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 844828808}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fffc1c6523073624ba1c400a485b1248, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nextLevel: 
-  filename: 
 --- !u!65 &844828811
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -25912,7 +25881,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextLevel: 
-  filename: 
+  filename: maze.txt
 --- !u!65 &1522495249
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -27297,6 +27266,7 @@ GameObject:
   - component: {fileID: 1585458729}
   - component: {fileID: 1585458728}
   - component: {fileID: 1585458732}
+  - component: {fileID: 1585458733}
   m_Layer: 0
   m_Name: Enemy (4)
   m_TagString: Untagged
@@ -27352,7 +27322,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 4, y: 1.5, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1585458730
 MeshRenderer:
@@ -27412,6 +27382,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92693230d1027a94b890b24d2668c245, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &1585458733
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1585458726}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4, y: 1.5, z: 1.1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1591575055
 GameObject:
   m_ObjectHideFlags: 0
@@ -29689,6 +29672,7 @@ GameObject:
   - component: {fileID: 1673699661}
   - component: {fileID: 1673699660}
   - component: {fileID: 1673699665}
+  - component: {fileID: 1673699666}
   m_Layer: 0
   m_Name: Enemy (3)
   m_TagString: Untagged
@@ -29723,7 +29707,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 4, y: 1.5, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1673699662
 MeshRenderer:
@@ -29800,6 +29784,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92693230d1027a94b890b24d2668c245, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &1673699666
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1673699659}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4, y: 1.5, z: 1.1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1678079224
 GameObject:
   m_ObjectHideFlags: 0
@@ -29814,6 +29811,7 @@ GameObject:
   - component: {fileID: 1678079226}
   - component: {fileID: 1678079225}
   - component: {fileID: 1678079230}
+  - component: {fileID: 1678079231}
   m_Layer: 0
   m_Name: Enemy (1)
   m_TagString: Untagged
@@ -29848,7 +29846,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 4, y: 1.5, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1678079227
 MeshRenderer:
@@ -29928,6 +29926,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92693230d1027a94b890b24d2668c245, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &1678079231
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1678079224}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4, y: 1.5, z: 1.1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1678743638
 GameObject:
   m_ObjectHideFlags: 0
