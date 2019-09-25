@@ -35,7 +35,8 @@ public class Ai : MonoBehaviour
     private void MoveToNode()
     {
         Vector3 position = nodes[currentNode].transform.position;
-        while (transform.position.normalized != position.normalized)
+        
+       /* while (transform.position.normalized != position.normalized)
         {
             if(transform.position.normalized.x != position.normalized.x)
             {
@@ -45,18 +46,28 @@ public class Ai : MonoBehaviour
             {
                 transform.Translate(0, 0, speed * Time.deltaTime);
             }            
-        }
+        } */ //while loops freeze unity ??
         transform.Rotate(nodes[currentNode].transform.rotation.eulerAngles);
+        Debug.Log(nodes[currentNode].transform.rotation.eulerAngles);
+
 
     }
     private void MoveToNextNode()
     {
         MoveToNode();
-        currentNode++;
+        if(currentNode < nodes.Count -1)
+        {
+            currentNode++;
+        }
+        else
+        {
+            currentNode = 0;
+        }
+        
     }
     private void Chase(Vector3 position)
     {
-        while (transform.position.normalized != position.normalized)
+        /*while (transform.position.normalized != position.normalized)
         {
             if (transform.position.normalized.x != position.normalized.x)
             {
@@ -67,7 +78,7 @@ public class Ai : MonoBehaviour
                 transform.Translate(0, 0, speed * Time.deltaTime);
             }
         }
-        
+        */
     }
     private void Return()
     {
