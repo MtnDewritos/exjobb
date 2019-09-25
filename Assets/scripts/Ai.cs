@@ -11,6 +11,7 @@ public class Ai : MonoBehaviour
     private int currentNode = 0;
     private float rayDist = 10f;
     private float viewDist = 6f;
+    private float backViewDist = 1f;
     private float speed = 3f;
     private bool chase = false;
     private bool ret = false;
@@ -35,6 +36,10 @@ public class Ai : MonoBehaviour
         {
             MoveToNextNode();
             nextMove = time + timeInterval;
+        }
+        else if(time < nextMove && !chase && !ret)
+        {
+            IdleRotate();
         }
                      
     }
@@ -88,7 +93,22 @@ public class Ai : MonoBehaviour
                 transform.Translate(0, 0, speed * Time.deltaTime);
             }
         }
-        //rotate to face               
+                       
+    }
+    private void RotateToFace(Vector3 position)
+    {
+        float rotationSpeed = 45f;
+        Vector3 direction = position - transform.position;
+        Quaternion lookRotation = Quaternion.LookRotation(direction);
+        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * rotationSpeed);
+    }
+    private void IdleRotate() //rotate when idle to look 10 degrees to the left and the right quickly so that the player can't just hug a wall to avoid detection
+    {
+        float rotationSpeed = 45f; //change if too fast to detect player
+         
+       // Vector3 direction = something - transform.position;
+      //  Quaternion lookRotation = Quaternion.LookRotation(direction);
+     //   transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * rotationSpeed);
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -106,13 +126,19 @@ public class Ai : MonoBehaviour
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, rayDist, layerMask))
         {
             Debug.Log("raycast hit");
-            if(hit.distance < viewDist)
+            if (hit.distance < viewDist)
             {
                 Debug.Log("hit within view distance");
                 Vector3 position = hit.collider.transform.position;
                 chase = true;
                 Chase(position);
             }
+        }
+        else if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, backViewDist, layerMask))
+        {
+            Debug.Log("hit within back view distance");
+            Vector3 position = hit.collider.transform.position;
+            RotateToFace(position);
         }
         else
         {
