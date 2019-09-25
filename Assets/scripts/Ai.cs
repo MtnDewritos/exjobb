@@ -12,6 +12,8 @@ public class Ai : MonoBehaviour
     private float rayDist = 10f;
     private float viewDist = 6f;
     private float speed = 3f;
+    private bool chase = false;
+    private bool ret = false;
     //private float chaseSpeed; //kanske ge spelaren en sprint också
 
     private int layerMask = 8;
@@ -25,7 +27,11 @@ public class Ai : MonoBehaviour
     {
         Look();
         float time = Time.time;
-        if(time > nextMove)
+        if (ret)
+        {
+            MoveToNode();
+        }
+        if(time > nextMove && !chase && !ret)
         {
             MoveToNextNode();
             nextMove = time + timeInterval;
@@ -36,7 +42,7 @@ public class Ai : MonoBehaviour
     {
         Vector3 position = nodes[currentNode].transform.position;
         
-       /* while (transform.position.normalized != position.normalized)
+        if (transform.position.normalized != position.normalized)
         {
             if(transform.position.normalized.x != position.normalized.x)
             {
@@ -46,7 +52,11 @@ public class Ai : MonoBehaviour
             {
                 transform.Translate(0, 0, speed * Time.deltaTime);
             }            
-        } */ //while loops freeze unity ??
+        }
+        else
+        {
+            ret = false;
+        }
         transform.Rotate(nodes[currentNode].transform.rotation.eulerAngles);
         Debug.Log(nodes[currentNode].transform.rotation.eulerAngles);
 
@@ -67,7 +77,7 @@ public class Ai : MonoBehaviour
     }
     private void Chase(Vector3 position)
     {
-        /*while (transform.position.normalized != position.normalized)
+        if (transform.position.normalized != position.normalized)
         {
             if (transform.position.normalized.x != position.normalized.x)
             {
@@ -78,11 +88,16 @@ public class Ai : MonoBehaviour
                 transform.Translate(0, 0, speed * Time.deltaTime);
             }
         }
-        */
+        //rotate to face               
     }
-    private void Return()
+    private void OnTriggerEnter(Collider other)
     {
-
+        if(other.name == "player")
+        {
+            chase = false;
+            ret = true;
+        }
+        
     }
     private void Look()
     {
@@ -95,11 +110,16 @@ public class Ai : MonoBehaviour
             {
                 Debug.Log("hit within view distance");
                 Vector3 position = hit.collider.transform.position;
-
+                chase = true;
                 Chase(position);
             }
-            
         }
-       
+        else
+        {
+            ret = true;
+            chase = false;
+        }
+
+
     }
 }
