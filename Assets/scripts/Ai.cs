@@ -11,14 +11,14 @@ public class Ai : MonoBehaviour
     private int currentNode = 0;
     private float rayDist = 10f;
     private float viewDist = 6f;
-    private float backViewDist = 1f;
+    private float backViewDist = -1f;
     private float speed = 0.5f;
     private bool chase = false;
     private bool ret = false;
     private bool setTime = true;
+    private bool setTimeLook = true;
     //private float chaseSpeed; //kanske ge spelaren en sprint också
 
-    private int layerMask = 8;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,65 +28,174 @@ public class Ai : MonoBehaviour
     void Update()
     {
         Look();
-        MoveToNode();
-       /* float time = Time.time;
-        if (ret)
+      
+        if (!chase && !ret)
         {
             MoveToNode();
         }
-        if(time > nextMove && !chase && !ret)
+        if(!chase && ret)
         {
-            MoveToNode();
-            nextMove = time + timeInterval;
-        }
-        else if(time < nextMove && !chase && !ret)
+            Return();
+        }                     
+    }
+    private void Return()
+    {
+        Vector3 nodePosition = nodes[currentNode].transform.position;
+        Vector3 position = transform.position;
+
+        float angle;
+        float nodeZ = Mathf.Round(nodePosition.z * 10f) / 10f; //rounding because floats suck
+        float nodeX = Mathf.Round(nodePosition.x * 10f) / 10f;
+        float z = Mathf.Round(position.z * 10f) / 10f;
+        float x = Mathf.Round(position.x * 10f) / 10f;
+        float diffX = nodeX - x;
+        float diffZ = nodeZ - z;
+        if (diffZ < 0)
         {
-            IdleRotate();
+            diffZ *= -1;
         }
-        */
-                     
+        if (diffX < 0)
+        {
+            diffX *= -1;
+        }
+        if ((diffX > 0.3 && diffZ > 1) || (diffZ > 0.3 && diffX > 1))
+        {
+            Debug.Log("not gonna get stuck ");
+            if (nodes[currentNode].transform.position.z > transform.position.z && diffZ < diffX)
+            {
+                angle = 0f;
+            }
+            else if (nodes[currentNode].transform.position.x > transform.position.x && diffZ > diffX)
+            {
+                angle = 90f;
+            }
+            else if (nodes[currentNode].transform.position.z < transform.position.z && diffZ < diffX)
+            {
+                angle = 180f;
+            }
+            else if (nodes[currentNode].transform.position.x < transform.position.x && diffZ > diffX)
+            {
+                angle = 270f;
+            }
+            else
+            {
+                Debug.Log("errr");
+                angle = 0f;
+            }
+
+            if (angle != (Mathf.Round(transform.rotation.eulerAngles.y * 10f) / 10f))
+            {
+                RotateToAngle(angle);
+            }
+            else
+            {
+                if (x < nodeX && diffZ > diffX)
+                {
+
+                    Debug.Log(x);
+                    Debug.Log(nodeX);
+                    transform.Translate(0, 0, speed * Time.deltaTime);
+                }
+                else if (x > nodeX && diffZ > diffX)
+                {
+                    Debug.Log(x);
+                    Debug.Log(nodeX);
+                    transform.Translate(0, 0, speed * Time.deltaTime);
+                }
+                else if (z < nodeZ && diffZ < diffX)
+                {
+                    Debug.Log(z);
+                    Debug.Log(nodeZ);
+                    transform.Translate(speed * Time.deltaTime, 0, 0);
+                }
+                else if (z > nodeZ && diffZ < diffX)
+                {
+                    Debug.Log(z);
+                    Debug.Log(nodeZ);
+                    transform.Translate(speed * Time.deltaTime, 0, 0);
+                }
+            }
+        }
+        else
+        {
+            angle = Angle(nodes[currentNode].transform.position);
+
+            if (angle != (Mathf.Round(transform.rotation.eulerAngles.y * 10f) / 10f))
+            {
+                RotateToAngle(angle);
+            }
+            else
+            {
+                MoveToNode();
+            }
+        }
+    }
+    private float Angle(Vector3 toPos)
+    {
+        if ((Mathf.Round(toPos.z *10f) /10f) > (Mathf.Round(transform.position.z * 10f) / 10f))
+            {
+                return 0f;
+            }
+            else if ((Mathf.Round(toPos.x * 10f) / 10f) > (Mathf.Round(transform.position.x * 10f) / 10f))
+            {
+            return 90f;
+            }
+            else if ((Mathf.Round(toPos.z * 10f) / 10f) < (Mathf.Round(transform.position.z * 10f) / 10f))
+            {
+            return 180f;
+            }
+            else if ((Mathf.Round(toPos.x * 10f) / 10f) < (Mathf.Round(transform.position.x * 10f) / 10f))
+            {
+            return 270f;
+            }
+            else
+            {
+                Debug.Log("this shouldn't happen");
+            return 0f;
+            }
     }
     private void MoveToNode()
     {
         Vector3 nodePosition = nodes[currentNode].transform.position;
         Vector3 position = transform.position;
-        float nodeZ = Mathf.Round(nodePosition.z * 100f) / 100f; //rounding because floats suck
-        float nodeX = Mathf.Round(nodePosition.x * 100f) / 100f;
-        float z = Mathf.Round(position.z * 100f) / 100f;
-        float x = Mathf.Round(position.x * 100f) / 100f;
+        float nodeZ = Mathf.Round(nodePosition.z * 10f) / 10f; //rounding because floats suck
+        float nodeX = Mathf.Round(nodePosition.x * 10f) / 10f;
+        float z = Mathf.Round(position.z * 10f) / 10f;
+        float x = Mathf.Round(position.x * 10f) / 10f;
 
         if (x < nodeX)
             {
 
-            Debug.Log(x);
+           Debug.Log(x);
             Debug.Log(nodeX);
             transform.Translate(0, 0, speed * Time.deltaTime);
             }
             else if (x > nodeX)
             {
-            Debug.Log(x);
-            Debug.Log(nodeX);
+               Debug.Log(x);
+               Debug.Log(nodeX);
             transform.Translate(0, 0, speed * Time.deltaTime);
             }
             else if (z < nodeZ)
             {
                 Debug.Log(z);
-                Debug.Log(nodeZ);
-                transform.Translate(speed * Time.deltaTime, 0, 0);
+             Debug.Log(nodeZ);
+            transform.Translate(speed * Time.deltaTime, 0, 0);
             }
             else if (z > nodeZ)
             {
-                Debug.Log(z);
-                Debug.Log(nodeZ);
+                 Debug.Log(z);
+             Debug.Log(nodeZ);
             transform.Translate(speed * Time.deltaTime, 0, 0);
             }
             else if (z == nodeZ && x == nodeX)
             {
-            float rotation = Mathf.Round(transform.rotation.eulerAngles.y * 100f) / 100f;
-            float angle; //NULLPOINTER EXCEPTION POSSIBLE!!?!?
+            Debug.Log("got there");
+            float rotation = Mathf.Round(transform.rotation.eulerAngles.y * 10f) / 10f;
+            float angle; 
             
             ret = false;
-            if(rotation != (Mathf.Round(nodes[currentNode].transform.rotation.eulerAngles.y * 100f) / 100f) && setTime)
+            if(rotation != (Mathf.Round(nodes[currentNode].transform.rotation.eulerAngles.y * 10f) / 10f) && setTime)
             {
                 RotateToAngle(nodes[currentNode].transform.rotation.eulerAngles.y);
             }
@@ -101,27 +210,7 @@ public class Ai : MonoBehaviour
                 }
                 else
                 {
-                    if (nodes[NextNode].transform.position.z > z)
-                    {
-                        angle = 0f;
-                    }
-                    else if (nodes[NextNode].transform.position.x > x)
-                    {
-                        angle = 90f;
-                    }
-                    else if (nodes[NextNode].transform.position.z < z)
-                    {
-                        angle = 180f; 
-                    }
-                    else if (nodes[NextNode].transform.position.x < x)
-                    {
-                        angle = 270;   
-                    }
-                    else
-                    {
-                        Debug.Log("current and next node at same position");
-                        angle = 0f;
-                    }
+                    angle = Angle(nodes[NextNode].transform.position);
 
                     if (Time.time > nextMove)
                     {
@@ -170,9 +259,8 @@ public class Ai : MonoBehaviour
     }
     private void RotateToAngle(float angle)
     {
-        Debug.Log("rotating");
         float rotationSpeed = 5f;
-        Debug.Log("angle to rotate to: " + angle);
+        
         transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, angle, 0), rotationSpeed * Time.deltaTime);
     }
     private int NextNode
@@ -189,47 +277,41 @@ public class Ai : MonoBehaviour
     private void Chase(Vector3 targetPosition)
     {
         Vector3 position = transform.position;
-        float targetZ = Mathf.Round(targetPosition.z * 100f) / 100f;
-        float targetX = Mathf.Round(targetPosition.x * 100f) / 100f;
-        float z = Mathf.Round(position.z * 100f) / 100f;
-        float x = Mathf.Round(position.x * 100f) / 100f;
+        float targetZ = Mathf.Round(targetPosition.z * 10f) / 10f;
+        float targetX = Mathf.Round(targetPosition.x * 10f) / 10f;
+        float z = Mathf.Round(position.z * 10f) / 10f;
+        float x = Mathf.Round(position.x * 10f) / 10f;
 
         if (x < targetX)
         {
 
-            Debug.Log(x);
-            Debug.Log(targetX);
+            //    Debug.Log(x);
+            // Debug.Log(targetX);
             transform.Translate(0, 0, speed * Time.deltaTime);
         }
         else if (x > targetX)
         {
-            Debug.Log(x);
-            Debug.Log(targetX);
-            transform.Translate(0, 0, -speed * Time.deltaTime);
+           // Debug.Log(x);
+          //  Debug.Log(targetX);
+            transform.Translate(0, 0, speed * Time.deltaTime);
         }
         else if (z < targetZ)
         {
-            Debug.Log(z);
-            Debug.Log(targetZ);
+            //  Debug.Log(z);
+            //            Debug.Log(targetZ);
             transform.Translate(speed * Time.deltaTime, 0, 0);
         }
         else if (z > targetZ)
         {
-            Debug.Log(z);
-            Debug.Log(targetZ);
-            transform.Translate(-speed * Time.deltaTime, 0, 0);
+            //   Debug.Log(z);
+            // Debug.Log(targetZ);
+            transform.Translate(speed * Time.deltaTime, 0, 0);
         }
-
+        
     
                        
     }
-    private void RotateToFace(Vector3 position)
-    {
-        float rotationSpeed = 45f;
-        Vector3 direction = position - transform.position;
-        Quaternion lookRotation = Quaternion.LookRotation(direction);
-        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * rotationSpeed);
-    }
+    
     private void IdleRotate(float angle, int state) //rotate when idle to look 10 degrees to the left and the right quickly so that the player can't just hug a wall to avoid detection
     {
         float rotateAmount = 10f;
@@ -252,6 +334,7 @@ public class Ai : MonoBehaviour
     {
         if(other.name == "player")
         {
+            Debug.Log("hit player, returning");
             chase = false;
             ret = true;
         }
@@ -260,30 +343,108 @@ public class Ai : MonoBehaviour
     private void Look()
     {
         RaycastHit hit;
+        int layerMask = LayerMask.GetMask("player");
         Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward));
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, rayDist, layerMask))
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity, layerMask))
         {
-            Debug.Log("raycast hit");
             if (hit.distance < viewDist)
             {
-                Debug.Log("hit within view distance");
                 Vector3 position = hit.collider.transform.position;
                 chase = true;
-                Chase(position);
+                setTimeLook = true;
+                if (chase && !ret)
+                {
+                    Chase(position);
+                }
+
             }
         }
         else if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, backViewDist, layerMask))
         {
+            setTimeLook = true;
             Debug.Log("hit within back view distance");
             Vector3 position = hit.collider.transform.position;
-            RotateToFace(position);
+            RotateToAngle(nodes[currentNode].transform.rotation.eulerAngles.y - 180);
         }
         else
         {
-            ret = true;
-            chase = false;
+            if (chase)
+            {
+                float angle;
+                if (setTimeLook)
+                {
+                    nextMove = Time.time + timeInterval;
+                    Debug.Log("set time to wait for to: " + nextMove + " from: " + Time.time);
+                    setTimeLook = false;
+                }
+                else
+                {
+                    float nodeZ = nodes[currentNode].transform.position.z;
+                    float z = transform.position.z;
+                    float nodeX = nodes[currentNode].transform.position.x;
+                    float x = transform.position.x;
+                    float diffX = nodeX - x;
+                    float diffZ = nodeZ - z;
+                    if(diffZ < 0)
+                    {
+                        diffZ *= -1;
+                    }
+                    if (diffX < 0)
+                    {
+                        diffX *= -1;
+                    }
+
+                    if (nodes[currentNode].transform.position.z < transform.position.z && diffZ > diffX)
+                    {
+                        angle = 0f;
+                    }
+                    else if (nodes[currentNode].transform.position.x < transform.position.x && diffZ < diffX)
+                    {
+                        angle = 90f;
+                    }
+                    else if (nodes[currentNode].transform.position.z > transform.position.z && diffZ > diffX)
+                    {
+                        angle = 180f;
+                    }
+                    else if (nodes[currentNode].transform.position.x > transform.position.x && diffZ < diffX)
+                    {
+                        angle = 270;
+                    }
+                    else
+                    {
+                        Debug.Log("err");
+                        angle = 0f;
+                    }
+
+                    if (Time.time < nextMove)
+                    {
+                        if (nextMove - Time.time < 1)
+                        {
+                            Debug.Log("time is short " + (nextMove - Time.time));
+                            IdleRotate(angle, 3);
+                        }
+                        else if (nextMove - Time.time < 2)
+                        {
+                            Debug.Log("time is medium " + (nextMove - Time.time));
+                            IdleRotate(angle, 2);
+                        }
+                        else if (nextMove - Time.time < 3)
+                        {
+                            Debug.Log("time is long " + (nextMove - Time.time));
+                            IdleRotate(angle, 1);
+                        }
+                        Debug.Log("looking");
+                    }
+                    else
+                    {
+                        Debug.Log("finished looking, returning");
+                        setTimeLook = true;
+                        ret = true;
+                        chase = false;
+                    }
+
+                }
+            }
         }
-
-
     }
 }
