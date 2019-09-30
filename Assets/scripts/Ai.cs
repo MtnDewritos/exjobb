@@ -40,9 +40,13 @@ public class Ai : MonoBehaviour
     }
     private void Return()
     {
-        
-        source.loop = true;
-        source.Play();
+
+        if (!source.loop)
+        {
+            source.loop = true;
+
+            source.Play();
+        }
 
         Vector3 nodePosition = nodes[currentNode].transform.position;
         Vector3 position = transform.position;
@@ -160,8 +164,7 @@ public class Ai : MonoBehaviour
     }
     private void MoveToNode()
     {
-        source.loop = true;
-        source.Play();
+        
 
         Vector3 nodePosition = nodes[currentNode].transform.position;
         Vector3 position = transform.position;
@@ -172,21 +175,38 @@ public class Ai : MonoBehaviour
 
         if (x < nodeX)
             {
+            if (!source.loop)
+            {
+                source.loop = true;
 
-         //  Debug.Log(x);
-       //     Debug.Log(nodeX);
+                source.Play();
+            }
+            //  Debug.Log(x);
+            //     Debug.Log(nodeX);
             transform.Translate(0, 0, speed * Time.deltaTime);
             }
             else if (x > nodeX)
             {
-       //        Debug.Log(x);
-        //       Debug.Log(nodeX);
+            if (!source.loop)
+            {
+                source.loop = true;
+
+                source.Play();
+            }
+            //        Debug.Log(x);
+            //       Debug.Log(nodeX);
             transform.Translate(0, 0, speed * Time.deltaTime);
             }
             else if (z < nodeZ)
             {
-       //         Debug.Log(z);
-       //      Debug.Log(nodeZ);
+            if (!source.loop)
+            {
+                source.loop = true;
+
+                source.Play();
+            }
+            //         Debug.Log(z);
+            //      Debug.Log(nodeZ);
             transform.Translate(speed * Time.deltaTime, 0, 0);
             }
             else if (z > nodeZ)
@@ -197,7 +217,12 @@ public class Ai : MonoBehaviour
             }
             else if (z == nodeZ && x == nodeX)
             {
-            
+            if (!source.loop)
+            {
+                source.loop = true;
+
+                source.Play();
+            }
             float rotation = Mathf.Round(transform.rotation.eulerAngles.y * 10f) / 10f;
             float angle; 
             
@@ -280,8 +305,8 @@ public class Ai : MonoBehaviour
     }
     private void Chase(Vector3 targetPosition)
     {
-        source.loop = true;
-        source.Play();
+        
+        
 
         Vector3 position = transform.position;
         float targetZ = Mathf.Round(targetPosition.z * 10f) / 10f;
@@ -291,29 +316,53 @@ public class Ai : MonoBehaviour
 
         if (x < targetX)
         {
+            if (!source.loop)
+            {
+                source.loop = true;
 
+                source.Play();
+            }
             //    Debug.Log(x);
             // Debug.Log(targetX);
             transform.Translate(0, 0, speed * Time.deltaTime);
         }
         else if (x > targetX)
         {
-           // Debug.Log(x);
-          //  Debug.Log(targetX);
+            if (!source.loop)
+            {
+                source.loop = true;
+
+                source.Play();
+            }
+            // Debug.Log(x);
+            //  Debug.Log(targetX);
             transform.Translate(0, 0, speed * Time.deltaTime);
         }
         else if (z < targetZ)
         {
+            if (!source.loop)
+            {
+                source.loop = true;
+
+                source.Play();
+            }
             //  Debug.Log(z);
             //            Debug.Log(targetZ);
             transform.Translate(speed * Time.deltaTime, 0, 0);
         }
         else if (z > targetZ)
         {
+            if (!source.loop)
+            {
+                source.loop = true;
+
+                source.Play();
+            }
             //   Debug.Log(z);
             // Debug.Log(targetZ);
             transform.Translate(speed * Time.deltaTime, 0, 0);
         }
+        
         
     
                        
