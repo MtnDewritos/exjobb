@@ -97,6 +97,8 @@ public class playerController : MonoBehaviour
             float time = Time.time;
             if (time >= nextPlay && timeInterval != 0f)
             {
+
+                Debug.Log("playing footstep");
                 nextPlay = time + timeInterval;
                 audioSource.Play();
             }

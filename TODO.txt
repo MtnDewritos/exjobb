@@ -1,12 +1,7 @@
 todo:
 
 
-script enemy (maze)
-	sees 6 units ahead, 2 units behind - done(ish)
-	chase player if player is seen
-	stop chasing player if outside of 10 units ahead
-	rotate while idle to cover all the way out to the walls
-	rotate to continously face player while chasing
+
 
 enemy audio (maze)
 tweak enemy audio (maze)
@@ -29,3 +24,10 @@ audio node hit starts new audio node (maze)
 hit counter + time counter
 make lights weaker further away from player (maze) (sighline to the next "tile")
 design level (maze) - done
+script enemy (maze)
+	sees 6 units ahead, 
+			2 units behind -nah
+	chase player if player is seen
+	stop chasing player if outside of 10 units ahead
+	rotate while idle to cover all the way out to the walls
+	rotate to continously face player while chasing -not really but close enough

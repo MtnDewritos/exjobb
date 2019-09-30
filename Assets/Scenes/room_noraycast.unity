@@ -2294,7 +2294,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 514816691}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8cc64aca77a4bc84f9a15ccd92d26878, type: 3}
   m_Name: 
@@ -2448,8 +2448,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fffc1c6523073624ba1c400a485b1248, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextLevel: maze
-  filename: room.txt
+  nextLevel: maze_noraycast
+  filename: room_noraycast.txt
 --- !u!65 &514816697
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2743,7 +2743,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 594377177}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8cc64aca77a4bc84f9a15ccd92d26878, type: 3}
   m_Name: 
@@ -2897,8 +2897,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fffc1c6523073624ba1c400a485b1248, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextLevel: maze
-  filename: room.txt
+  nextLevel: maze_noraycast
+  filename: room_noraycast.txt
 --- !u!65 &594377183
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3789,7 +3789,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 767300572}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8cc64aca77a4bc84f9a15ccd92d26878, type: 3}
   m_Name: 
@@ -3943,8 +3943,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fffc1c6523073624ba1c400a485b1248, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextLevel: maze
-  filename: room.txt
+  nextLevel: maze_noraycast
+  filename: room_noraycast.txt
 --- !u!65 &767300578
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6250,7 +6250,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 0b3cf9278b2ce89449f380abbc8896be, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.1
+  m_Volume: 0.15
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -7034,7 +7034,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1536088851}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8cc64aca77a4bc84f9a15ccd92d26878, type: 3}
   m_Name: 
@@ -7188,8 +7188,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fffc1c6523073624ba1c400a485b1248, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextLevel: maze
-  filename: room.txt
+  nextLevel: maze_noraycast
+  filename: room_noraycast.txt
 --- !u!65 &1536088857
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7751,7 +7751,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1639586856}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8cc64aca77a4bc84f9a15ccd92d26878, type: 3}
   m_Name: 
@@ -7905,8 +7905,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fffc1c6523073624ba1c400a485b1248, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextLevel: maze
-  filename: room.txt
+  nextLevel: maze_noraycast
+  filename: room_noraycast.txt
 --- !u!65 &1639586862
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8081,7 +8081,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1745356660}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8cc64aca77a4bc84f9a15ccd92d26878, type: 3}
   m_Name: 
@@ -8235,8 +8235,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fffc1c6523073624ba1c400a485b1248, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextLevel: maze
-  filename: room.txt
+  nextLevel: maze_noraycast
+  filename: room_noraycast.txt
 --- !u!65 &1745356666
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9097,7 +9097,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2020825952}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8cc64aca77a4bc84f9a15ccd92d26878, type: 3}
   m_Name: 
@@ -9251,8 +9251,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fffc1c6523073624ba1c400a485b1248, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextLevel: maze
-  filename: room.txt
+  nextLevel: maze_noraycast
+  filename: room_noraycast.txt
 --- !u!65 &2020825958
 BoxCollider:
   m_ObjectHideFlags: 0

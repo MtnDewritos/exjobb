@@ -18,6 +18,7 @@ public class spawnpoint_maze : MonoBehaviour
         int rand = Random.Range(0, 2);
         startPosition = spawnpoints[rand].transform.position;
         player.transform.position = startPosition;
+        player.transform.rotation = spawnpoints[rand].transform.rotation;
         endpoints.SendMessage("SelectPosition",rand);
     }
 

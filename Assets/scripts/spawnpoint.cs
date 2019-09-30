@@ -18,6 +18,7 @@ public class spawnpoint : MonoBehaviour
         int rand = Random.Range(0, 6);
         startPosition = spawnpoints[rand].transform.position;
         player.transform.position = startPosition;
+        player.transform.rotation = spawnpoints[rand].transform.rotation;
         endpoints.SendMessage("SelectPosition",startPosition);
     }
 
