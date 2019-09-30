@@ -19,17 +19,19 @@ public class endpoint_maze : MonoBehaviour //more like soundpoints
         i++;
         if(i == (endpoints.Length - 1))
         {
-            endpoints[i].SendMessage("isEnd", true);
+            endpoints[i].SendMessage("IsEnd", true);
+            Debug.Log("sending isEnd to enpoint nr " + i);
         }
     }
     private void Update()
     {
         float time = Time.time;
         float timeInterval = 1.5f;
-        if (time >= nextPlay && timeInterval != 0f)
+        if (time >= nextPlay && timeInterval != 0f && i < endpoints.Length)
         {
             nextPlay = time + timeInterval;
             endpoints[i].SendMessage("Play");
+
         }
     }
     IEnumerator PlaySound(GameObject point)

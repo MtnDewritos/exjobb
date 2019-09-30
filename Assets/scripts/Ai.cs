@@ -13,10 +13,12 @@ public class Ai : MonoBehaviour
     private float rayDist = 10f;
     private float viewDist = 6f;
     private float speed = 0.5f;
+    private float chaseSpeed = 1.5f;
     private bool chase = false;
     private bool ret = false;
     private bool setTime = true;
     private bool setTimeLook = true;
+    private float nextPlay = 0f;
     //private float chaseSpeed; //kanske ge spelaren en sprint också
 
     // Start is called before the first frame update
@@ -28,25 +30,43 @@ public class Ai : MonoBehaviour
     void Update()
     {
         Look();
-      
+        float time = Time.time;
+        
         if (!chase && !ret)
         {
+
             MoveToNode();
+            if (time >= nextPlay)
+            {
+
+                nextPlay = time + 1f;
+                source.Play();
+            }
         }
         if(!chase && ret)
         {
             Return();
-        }                     
+            if (time >= nextPlay )
+            {
+
+                nextPlay = time + 1f;
+                source.Play();
+            }
+        }
+        if (chase)
+        {
+            if (time >= nextPlay)
+            {
+
+                nextPlay = time + 0.33f;
+                source.Play();
+            }
+        }
     }
     private void Return()
     {
 
-        if (!source.loop)
-        {
-            source.loop = true;
-
-            source.Play();
-        }
+        
 
         Vector3 nodePosition = nodes[currentNode].transform.position;
         Vector3 position = transform.position;
@@ -112,15 +132,15 @@ public class Ai : MonoBehaviour
                 }
                 else if (z < nodeZ && diffZ < diffX)
                 {
-                  //  Debug.Log(z);
-                  //  Debug.Log(nodeZ);
-                    transform.Translate(speed * Time.deltaTime, 0, 0);
+                    //  Debug.Log(z);
+                    //  Debug.Log(nodeZ);
+                    transform.Translate(0, 0, speed * Time.deltaTime);
                 }
                 else if (z > nodeZ && diffZ < diffX)
                 {
-                  //  Debug.Log(z);
-                  //  Debug.Log(nodeZ);
-                    transform.Translate(speed * Time.deltaTime, 0, 0);
+                    //  Debug.Log(z);
+                    //  Debug.Log(nodeZ);
+                    transform.Translate(0, 0, speed * Time.deltaTime);
                 }
             }
         }
@@ -158,7 +178,7 @@ public class Ai : MonoBehaviour
             }
             else
             {
-                //Debug.Log("standing on node I'm trying to rotate to, rotating to node rotation");
+                Debug.Log("standing on node I'm trying to rotate to, rotating to node rotation");
                 return nodes[currentNode].transform.rotation.eulerAngles.y;
             }
     }
@@ -173,62 +193,68 @@ public class Ai : MonoBehaviour
         float z = Mathf.Round(position.z * 10f) / 10f;
         float x = Mathf.Round(position.x * 10f) / 10f;
 
+
+        
         if (x < nodeX)
             {
-            if (!source.loop)
-            {
-                source.loop = true;
-
-                source.Play();
-            }
-            //  Debug.Log(x);
-            //     Debug.Log(nodeX);
+            
+              Debug.Log(x);
+                 Debug.Log(nodeX);
             transform.Translate(0, 0, speed * Time.deltaTime);
             }
             else if (x > nodeX)
             {
-            if (!source.loop)
-            {
-                source.loop = true;
-
-                source.Play();
-            }
-            //        Debug.Log(x);
-            //       Debug.Log(nodeX);
+          
+                    Debug.Log(x);
+                   Debug.Log(nodeX);
             transform.Translate(0, 0, speed * Time.deltaTime);
             }
+        
             else if (z < nodeZ)
             {
-            if (!source.loop)
-            {
-                source.loop = true;
-
-                source.Play();
-            }
-            //         Debug.Log(z);
-            //      Debug.Log(nodeZ);
-            transform.Translate(speed * Time.deltaTime, 0, 0);
+       
+                     Debug.Log(z);
+                  Debug.Log(nodeZ);
+            transform.Translate(0, 0, speed * Time.deltaTime);
             }
             else if (z > nodeZ)
             {
-        //         Debug.Log(z);
-        //     Debug.Log(nodeZ);
-            transform.Translate(speed * Time.deltaTime, 0, 0);
+                 Debug.Log(z);
+             Debug.Log(nodeZ);
+            transform.Translate(0, 0, speed * Time.deltaTime);
             }
+        else if (x == nodeX && !(z == nodeZ))
+        {
+            Debug.Log("rotating to face point to move to");
+
+            float angle = Angle(nodes[currentNode].transform.position);
+
+            if (angle != (Mathf.Round(transform.rotation.eulerAngles.y * 10f) / 10f))
+            {
+                RotateToAngle(angle);
+            }
+        }
+        else if(z == nodeZ && !(x == nodeX))
+        {
+            Debug.Log("rotating to face point to move to");
+            float angle = Angle(nodes[currentNode].transform.position);
+
+            if (angle != (Mathf.Round(transform.rotation.eulerAngles.y * 10f) / 10f))
+            {
+                RotateToAngle(angle);
+            }
+        }
             else if (z == nodeZ && x == nodeX)
             {
-            if (!source.loop)
-            {
-                source.loop = true;
+            Debug.Log("rotating to face point to move to");
 
-                source.Play();
-            }
             float rotation = Mathf.Round(transform.rotation.eulerAngles.y * 10f) / 10f;
             float angle; 
             
             ret = false;
             if(rotation != (Mathf.Round(nodes[currentNode].transform.rotation.eulerAngles.y * 10f) / 10f) && setTime)
             {
+                Debug.Log("rotating");
                 RotateToAngle(nodes[currentNode].transform.rotation.eulerAngles.y);
             }
             else
@@ -237,6 +263,7 @@ public class Ai : MonoBehaviour
                 if (setTime)
                 {
                     nextMove = Time.time + timeInterval;
+                    nextPlay = nextMove;
                  //   Debug.Log("set time to wait for to: " + nextMove + " from: " + Time.time);
                     setTime = false;
                 }
@@ -250,7 +277,7 @@ public class Ai : MonoBehaviour
                    //     Debug.Log("current rotation: " + transform.rotation.eulerAngles.y);
                         if (rotation == angle)
                         {
-                //            Debug.Log("finished rotating");
+                            Debug.Log("finished rotating");
                             setTime = true;
                             currentNode = NextNode;
                         }
@@ -316,61 +343,41 @@ public class Ai : MonoBehaviour
 
         if (x < targetX)
         {
-            if (!source.loop)
-            {
-                source.loop = true;
-
-                source.Play();
-            }
+            
             //    Debug.Log(x);
             // Debug.Log(targetX);
-            transform.Translate(0, 0, speed * Time.deltaTime);
+            transform.Translate(0, 0, chaseSpeed * Time.deltaTime);
         }
         else if (x > targetX)
         {
-            if (!source.loop)
-            {
-                source.loop = true;
-
-                source.Play();
-            }
+            
             // Debug.Log(x);
             //  Debug.Log(targetX);
-            transform.Translate(0, 0, speed * Time.deltaTime);
+            transform.Translate(0, 0, chaseSpeed * Time.deltaTime);
         }
         else if (z < targetZ)
         {
-            if (!source.loop)
-            {
-                source.loop = true;
 
-                source.Play();
-            }
             //  Debug.Log(z);
             //            Debug.Log(targetZ);
-            transform.Translate(speed * Time.deltaTime, 0, 0);
+            transform.Translate(0, 0, speed * Time.deltaTime);
         }
         else if (z > targetZ)
         {
-            if (!source.loop)
-            {
-                source.loop = true;
 
-                source.Play();
-            }
             //   Debug.Log(z);
             // Debug.Log(targetZ);
-            transform.Translate(speed * Time.deltaTime, 0, 0);
+            transform.Translate(0, 0, speed * Time.deltaTime);
         }
-        
-        
-    
-                       
+
+
+
+
     }
     
     private void IdleRotate(float angle, int state) //rotate when idle to look 10 degrees to the left and the right quickly so that the player can't just hug a wall to avoid detection
     {
-        source.loop = false;
+        
         float rotateAmount = 10f;
         float angle1 = angle + rotateAmount;
         float angle2 = angle - rotateAmount;
@@ -429,6 +436,7 @@ public class Ai : MonoBehaviour
                 if (setTimeLook)
                 {
                     nextMove = Time.time + timeInterval;
+                    nextPlay = nextMove;
                  //  Debug.Log("set time to wait for to: " + nextMove + " from: " + Time.time);
                     setTimeLook = false;
                 }

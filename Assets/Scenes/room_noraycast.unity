@@ -2282,7 +2282,7 @@ Transform:
   m_GameObject: {fileID: 514816691}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 13.11, y: 0, z: 7.74}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.33, y: 1.33, z: 1.33}
   m_Children: []
   m_Father: {fileID: 1450202325}
   m_RootOrder: 4
@@ -2448,7 +2448,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fffc1c6523073624ba1c400a485b1248, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextLevel: maze_noraycast
+  nextLevel: maze
   filename: room_noraycast.txt
 --- !u!65 &514816697
 BoxCollider:
@@ -2731,7 +2731,7 @@ Transform:
   m_GameObject: {fileID: 594377177}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -12.49}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.33, y: 1.33, z: 1.33}
   m_Children: []
   m_Father: {fileID: 1450202325}
   m_RootOrder: 5
@@ -2897,7 +2897,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fffc1c6523073624ba1c400a485b1248, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextLevel: maze_noraycast
+  nextLevel: maze
   filename: room_noraycast.txt
 --- !u!65 &594377183
 BoxCollider:
@@ -3777,7 +3777,7 @@ Transform:
   m_GameObject: {fileID: 767300572}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 11.52, y: 0, z: -3.4}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.33, y: 1.33, z: 1.33}
   m_Children: []
   m_Father: {fileID: 1450202325}
   m_RootOrder: 6
@@ -3943,7 +3943,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fffc1c6523073624ba1c400a485b1248, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextLevel: maze_noraycast
+  nextLevel: maze
   filename: room_noraycast.txt
 --- !u!65 &767300578
 BoxCollider:
@@ -7022,7 +7022,7 @@ Transform:
   m_GameObject: {fileID: 1536088851}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 16.29, y: 0, z: 18.68}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.33, y: 1.33, z: 1.33}
   m_Children: []
   m_Father: {fileID: 1450202325}
   m_RootOrder: 3
@@ -7188,7 +7188,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fffc1c6523073624ba1c400a485b1248, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextLevel: maze_noraycast
+  nextLevel: maze
   filename: room_noraycast.txt
 --- !u!65 &1536088857
 BoxCollider:
@@ -7739,7 +7739,7 @@ Transform:
   m_GameObject: {fileID: 1639586856}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -7.69}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.33, y: 1.33, z: 1.33}
   m_Children: []
   m_Father: {fileID: 1450202325}
   m_RootOrder: 0
@@ -7905,7 +7905,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fffc1c6523073624ba1c400a485b1248, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextLevel: maze_noraycast
+  nextLevel: maze
   filename: room_noraycast.txt
 --- !u!65 &1639586862
 BoxCollider:
@@ -8069,7 +8069,7 @@ Transform:
   m_GameObject: {fileID: 1745356660}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 4.77, y: 0, z: 19.37}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.33, y: 1.33, z: 1.33}
   m_Children: []
   m_Father: {fileID: 1450202325}
   m_RootOrder: 2
@@ -8235,7 +8235,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fffc1c6523073624ba1c400a485b1248, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextLevel: maze_noraycast
+  nextLevel: maze
   filename: room_noraycast.txt
 --- !u!65 &1745356666
 BoxCollider:
@@ -9085,7 +9085,7 @@ Transform:
   m_GameObject: {fileID: 2020825952}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 16.12, y: 0, z: -8.29}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.33, y: 1.33, z: 1.33}
   m_Children: []
   m_Father: {fileID: 1450202325}
   m_RootOrder: 1
@@ -9251,7 +9251,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fffc1c6523073624ba1c400a485b1248, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextLevel: maze_noraycast
+  nextLevel: maze
   filename: room_noraycast.txt
 --- !u!65 &2020825958
 BoxCollider:

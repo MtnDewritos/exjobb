@@ -25,16 +25,7 @@ public class playerController : MonoBehaviour
         
     }
 
-    IEnumerator Footsteps(Vector3 velocity) //måste på nått sätt få den konstanta ändringen i velocity
-    {
-        if (velocity.x > 0.1 || velocity.z > 0.1)
-        {
-            float time = 1 / (velocity.x + velocity.y); 
-            yield return new WaitForSeconds(time);
-            Debug.Log("played sound");
-            audioSource.Play();
-        }
-    }
+   
 
     void Update()
     {
@@ -98,7 +89,6 @@ public class playerController : MonoBehaviour
             if (time >= nextPlay && timeInterval != 0f)
             {
 
-                Debug.Log("playing footstep");
                 nextPlay = time + timeInterval;
                 audioSource.Play();
             }

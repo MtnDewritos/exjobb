@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/maze.unity
     guid: 40fe8a7c8cff7344fb6d84d2ed61187e
+  - enabled: 1
+    path: Assets/Scenes/room_noraycast.unity
+    guid: 93aaa45e489077c439c11e358035cca4
+  - enabled: 1
+    path: Assets/Scenes/maze_noraycast.unity
+    guid: dec20117d114a43489607129f9bc76ec
   m_configObjects: {}

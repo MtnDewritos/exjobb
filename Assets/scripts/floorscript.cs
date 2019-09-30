@@ -6,7 +6,10 @@ public class floorscript : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        GetComponentInParent<lightcontrol>().SendMessage("LightNeighbors");
-        GetComponentInParent<lightcontrol>().SendMessage("LightUp");
+        if (other.name == "player")
+        {
+            GetComponentInParent<lightcontrol>().SendMessage("LightNeighbors");
+            GetComponentInParent<lightcontrol>().SendMessage("LightUp");
+        }
     }
 }
