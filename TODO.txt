@@ -1,16 +1,12 @@
 todo:
 
-
-
-
-enemy audio (maze)
 tweak enemy audio (maze)
 playtest (both)
 
 Tutorial Room
 
-non-raycast version of everything
-	mirror (maze)
+
+	mirror (maze) - ah shiid
 
 
 done:
@@ -31,3 +27,5 @@ script enemy (maze)
 	stop chasing player if outside of 10 units ahead
 	rotate while idle to cover all the way out to the walls
 	rotate to continously face player while chasing -not really but close enough
+enemy audio (maze)
+non-raycast version of everything
