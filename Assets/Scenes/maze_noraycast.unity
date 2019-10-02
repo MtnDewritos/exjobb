@@ -28026,7 +28026,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextLevel: room
-  filename: maze.txt
+  filename: maze_noraycast.txt
 --- !u!65 &1522495249
 BoxCollider:
   m_ObjectHideFlags: 0
