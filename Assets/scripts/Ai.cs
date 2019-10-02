@@ -178,7 +178,7 @@ public class Ai : MonoBehaviour
             }
             else
             {
-                Debug.Log("standing on node I'm trying to rotate to, rotating to node rotation");
+              //  Debug.Log("standing on node I'm trying to rotate to, rotating to node rotation");
                 return nodes[currentNode].transform.rotation.eulerAngles.y;
             }
     }
@@ -197,35 +197,35 @@ public class Ai : MonoBehaviour
         
         if (x < nodeX)
             {
-            
-              Debug.Log(x);
-                 Debug.Log(nodeX);
+
+            //  Debug.Log(x);
+            //     Debug.Log(nodeX);
             transform.Translate(0, 0, speed * Time.deltaTime);
             }
             else if (x > nodeX)
             {
-          
-                    Debug.Log(x);
-                   Debug.Log(nodeX);
+
+            //      Debug.Log(x);
+            // Debug.Log(nodeX);
             transform.Translate(0, 0, speed * Time.deltaTime);
             }
         
             else if (z < nodeZ)
             {
-       
-                     Debug.Log(z);
-                  Debug.Log(nodeZ);
+
+            //       Debug.Log(z);
+            //Debug.Log(nodeZ);
             transform.Translate(0, 0, speed * Time.deltaTime);
             }
             else if (z > nodeZ)
             {
-                 Debug.Log(z);
-             Debug.Log(nodeZ);
+            //    Debug.Log(z);
+            //Debug.Log(nodeZ);
             transform.Translate(0, 0, speed * Time.deltaTime);
             }
         else if (x == nodeX && !(z == nodeZ))
         {
-            Debug.Log("rotating to face point to move to");
+            //Debug.Log("rotating to face point to move to");
 
             float angle = Angle(nodes[currentNode].transform.position);
 
@@ -236,7 +236,7 @@ public class Ai : MonoBehaviour
         }
         else if(z == nodeZ && !(x == nodeX))
         {
-            Debug.Log("rotating to face point to move to");
+            //Debug.Log("rotating to face point to move to");
             float angle = Angle(nodes[currentNode].transform.position);
 
             if (angle != (Mathf.Round(transform.rotation.eulerAngles.y * 10f) / 10f))
@@ -246,7 +246,7 @@ public class Ai : MonoBehaviour
         }
             else if (z == nodeZ && x == nodeX)
             {
-            Debug.Log("rotating to face point to move to");
+            //Debug.Log("rotating to face point to move to");
 
             float rotation = Mathf.Round(transform.rotation.eulerAngles.y * 10f) / 10f;
             float angle; 
@@ -254,7 +254,7 @@ public class Ai : MonoBehaviour
             ret = false;
             if(rotation != (Mathf.Round(nodes[currentNode].transform.rotation.eulerAngles.y * 10f) / 10f) && setTime)
             {
-                Debug.Log("rotating");
+                //  Debug.Log("rotating");
                 RotateToAngle(nodes[currentNode].transform.rotation.eulerAngles.y);
             }
             else
@@ -277,7 +277,7 @@ public class Ai : MonoBehaviour
                    //     Debug.Log("current rotation: " + transform.rotation.eulerAngles.y);
                         if (rotation == angle)
                         {
-                            Debug.Log("finished rotating");
+                            //             Debug.Log("finished rotating");
                             setTime = true;
                             currentNode = NextNode;
                         }

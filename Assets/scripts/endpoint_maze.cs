@@ -10,9 +10,9 @@ public class endpoint_maze : MonoBehaviour //more like soundpoints
     private float nextPlay = 0f;
     private int i = 0;
 
-    public void SelectPosition(int start)
+    public void SelectPosition()
     {
-        StartCoroutine(PlaySound(endpoints[start]));
+        //StartCoroutine(PlaySound(endpoints[0]));
     }
     public void Increment()
     {
@@ -31,17 +31,17 @@ public class endpoint_maze : MonoBehaviour //more like soundpoints
         {
             nextPlay = time + timeInterval;
             endpoints[i].SendMessage("Play");
-
         }
     }
-    IEnumerator PlaySound(GameObject point)
+   /* IEnumerator PlaySound(GameObject point)
     {
         while (true)
         {
+
             float time = 1.5f;
             yield return new WaitForSeconds(time);
             point.SendMessage("Play");
         }
 
-    }
+    }*/
 }

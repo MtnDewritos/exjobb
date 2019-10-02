@@ -22,7 +22,22 @@ public class endlevel : MonoBehaviour
             string path = @"c:\temp\" + filename;
             if (!File.Exists(path))
             {
-                int nr = GameObject.Find("geometry").GetComponent<counter>().Nr;
+                int nr = -1;
+                if (SceneManager.GetActiveScene().name == "room" || SceneManager.GetActiveScene().name == "room_noraycast")
+                {
+                    nr = GameObject.Find("geometry").GetComponent<counter>().Nr;
+                }
+                else if (SceneManager.GetActiveScene().name == "tutorial_room")
+                {
+                    nr = 0;
+                }
+                else
+                {
+                    nr = GameObject.Find("Enemy (1)").GetComponent<counter>().Nr;
+                    nr += GameObject.Find("Enemy (2)").GetComponent<counter>().Nr;
+                    nr += GameObject.Find("Enemy (3)").GetComponent<counter>().Nr;
+                    nr += GameObject.Find("Enemy (4)").GetComponent<counter>().Nr;
+                }
                 // Create a file to write to.
                 using (StreamWriter sw = File.CreateText(path))
                 {
