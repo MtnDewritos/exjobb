@@ -4193,7 +4193,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fffc1c6523073624ba1c400a485b1248, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextLevel: room
+  nextLevel: room_noraycast
   filename: tutorial.txt
 --- !u!65 &1639586862
 BoxCollider:
@@ -4509,7 +4509,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fffc1c6523073624ba1c400a485b1248, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextLevel: room
+  nextLevel: room_noraycast
   filename: tutorial.txt
 --- !u!65 &1745356666
 BoxCollider:

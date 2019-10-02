@@ -28025,7 +28025,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fffc1c6523073624ba1c400a485b1248, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextLevel: maze_noraycast
+  nextLevel: tutorial_room
   filename: maze.txt
 --- !u!65 &1522495249
 BoxCollider:
