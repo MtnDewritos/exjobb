@@ -1,11 +1,31 @@
 todo:
 
-design level + mirror (labyrinth)
-script enemy (labyrinth)
-tweak enemy audio (labyrinth)
-script audio nodes (both)
+tweak enemy audio (maze)
+playtest (both)
+
+Tutorial Room
+
+
+	mirror (maze) - ah shiid
+
+
+done:
+
+script audio nodes (both) 
 script level end (both)
 script spawnpoint randomization (room)
-script endpoint randomization (room)
-player wall hit sfx (room)
-playtest (both)
+script endpoint randomization (room) 
+player wall hit sfx (room) -- footsteps 
+audio node hit starts new audio node (maze)
+hit counter + time counter
+make lights weaker further away from player (maze) (sighline to the next "tile")
+design level (maze) - done
+script enemy (maze)
+	sees 6 units ahead, 
+			2 units behind -nah
+	chase player if player is seen
+	stop chasing player if outside of 10 units ahead
+	rotate while idle to cover all the way out to the walls
+	rotate to continously face player while chasing -not really but close enough
+enemy audio (maze)
+non-raycast version of everything
