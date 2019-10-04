@@ -12,14 +12,13 @@ public class Ai : MonoBehaviour
     private int currentNode = 0;
     private float rayDist = 10f;
     private float viewDist = 6f;
-    private float speed = 0.5f;
-    private float chaseSpeed = 1.5f;
+    private float speed = 1f;
+    private float chaseSpeed = 2.5f;
     private bool chase = false;
     private bool ret = false;
     private bool setTime = true;
     private bool setTimeLook = true;
     private float nextPlay = 0f;
-    //private float chaseSpeed; //kanske ge spelaren en sprint också
 
     // Start is called before the first frame update
     void Start()
@@ -39,7 +38,7 @@ public class Ai : MonoBehaviour
             if (time >= nextPlay)
             {
 
-                nextPlay = time + 1f;
+                nextPlay = time + 0.66f;
                 source.Play();
             }
         }
@@ -49,7 +48,7 @@ public class Ai : MonoBehaviour
             if (time >= nextPlay )
             {
 
-                nextPlay = time + 1f;
+                nextPlay = time + 0.66f;
                 source.Play();
             }
         }

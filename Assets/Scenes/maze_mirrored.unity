@@ -21413,16 +21413,16 @@ MonoBehaviour:
     LowFreqTransmission: 0.1
     MidFreqTransmission: 0.05
     HighFreqTransmission: 0.03
-  simulationPreset: 0
+  simulationPreset: 2
   simulationValue:
     OcclusionSamples: 128
-    RealtimeRays: 4096
+    RealtimeRays: 16384
     RealtimeSecondaryRays: 1024
-    RealtimeBounces: 2
+    RealtimeBounces: 8
     RealtimeThreadsPercentage: 5
-    BakeRays: 16384
+    BakeRays: 65536
     BakeSecondaryRays: 4096
-    BakeBounces: 32
+    BakeBounces: 128
     BakeThreadsPercentage: 5
     Duration: 1
     AmbisonicsOrder: 1
