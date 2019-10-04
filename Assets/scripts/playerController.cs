@@ -51,6 +51,8 @@ public class playerController : MonoBehaviour
         Vector3 _cameraRotation = new Vector3(_xRot, 0f, 0f) * sensitivity;
         motor.RotateCamera(_cameraRotation);
 
+       
+
         if (audioSource != null)
         {
             //play footsteps with interval based on player speed

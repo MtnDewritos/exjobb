@@ -42,7 +42,7 @@ public class endlevel : MonoBehaviour
                 using (StreamWriter sw = File.CreateText(path))
                 {
                     sw.WriteLine("Time taken: " + Time.time + "s");
-                    sw.WriteLine("Wall hits: " + nr);
+                    sw.WriteLine("Hits: " + nr);
                 }
             }
             //write to file "Time taken " + Time.time
