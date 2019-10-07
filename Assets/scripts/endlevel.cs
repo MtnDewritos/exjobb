@@ -23,7 +23,7 @@ public class endlevel : MonoBehaviour
             if (!File.Exists(path))
             {
                 int nr = -1;
-                if (SceneManager.GetActiveScene().name == "room" || SceneManager.GetActiveScene().name == "room_noraycast")
+                if (SceneManager.GetActiveScene().name == "Room" || SceneManager.GetActiveScene().name == "room_noraycast")
                 {
                     nr = GameObject.Find("geometry").GetComponent<counter>().Nr;
                 }
@@ -34,9 +34,6 @@ public class endlevel : MonoBehaviour
                 else
                 {
                     nr = GameObject.Find("Enemy (1)").GetComponent<counter>().Nr;
-                    nr += GameObject.Find("Enemy (2)").GetComponent<counter>().Nr;
-                    nr += GameObject.Find("Enemy (3)").GetComponent<counter>().Nr;
-                    nr += GameObject.Find("Enemy (4)").GetComponent<counter>().Nr;
                 }
                 // Create a file to write to.
                 using (StreamWriter sw = File.CreateText(path))
