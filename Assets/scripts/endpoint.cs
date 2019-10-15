@@ -21,6 +21,7 @@ public class endpoint : MonoBehaviour
             //Debug.Log("picking position");
         }
         endpoints[rand].SendMessage("IsEnd", true);
+        Debug.Log("selected point " + rand);
         StartCoroutine(PlaySound(endpoints[rand]));
     }
     IEnumerator PlaySound(GameObject point) 

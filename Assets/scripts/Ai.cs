@@ -62,6 +62,10 @@ public class Ai : MonoBehaviour
             }
         }
     }
+    public bool Chasing
+    {
+        get { return chase; }
+    }
     private void Return()
     {
 
@@ -121,25 +125,25 @@ public class Ai : MonoBehaviour
 
                     //Debug.Log(x);
                    // Debug.Log(nodeX);
-                    transform.Translate(0, 0, speed * Time.deltaTime);
+                    transform.Translate(0, 0, chaseSpeed * Time.deltaTime);
                 }
                 else if (x > nodeX && diffZ > diffX)
                 {
                    // Debug.Log(x);
                   //  Debug.Log(nodeX);
-                    transform.Translate(0, 0, speed * Time.deltaTime);
+                    transform.Translate(0, 0, chaseSpeed * Time.deltaTime);
                 }
                 else if (z < nodeZ && diffZ < diffX)
                 {
                     //  Debug.Log(z);
                     //  Debug.Log(nodeZ);
-                    transform.Translate(0, 0, speed * Time.deltaTime);
+                    transform.Translate(0, 0, chaseSpeed * Time.deltaTime);
                 }
                 else if (z > nodeZ && diffZ < diffX)
                 {
                     //  Debug.Log(z);
                     //  Debug.Log(nodeZ);
-                    transform.Translate(0, 0, speed * Time.deltaTime);
+                    transform.Translate(0, 0, chaseSpeed * Time.deltaTime);
                 }
             }
         }
@@ -395,11 +399,12 @@ public class Ai : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if(other.name == "player")
+        if(other.name == "player" && chase)
         {
             Debug.Log("hit player, returning");
             chase = false;
             ret = true;
+
         }
         
     }
@@ -413,7 +418,11 @@ public class Ai : MonoBehaviour
         {
             if (hit.distance < viewDist)
             {
-               // Debug.Log("hit");
+                // Debug.Log("hit");
+                if (!setTimeLook)
+                {
+                    nextPlay = Time.time + 0.33f;
+                }
                 Vector3 position = hit.collider.transform.position;
                 if (!ret)
                 {
